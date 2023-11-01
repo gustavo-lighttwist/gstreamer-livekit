@@ -8,14 +8,29 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.70"
 byteorder = "1.4.3"
-gstreamer = "0.21.0"
-gstreamer-app = "0.21.0"
-gstreamer-sys = "0.21.0"
-gstreamer-video = "0.21.0"
-gstreamer-pbutils = "0.21.0"
-gstreamer-pbutils-sys = "0.21.0"
-gstreamer-rtsp = "0.21.0"
-gstreamer-rtp = "0.21.0"
-gstreamer-webrtc = "0.21.0"
-gst-plugin-webrtc = { git = "https://github.com/spiegela/gst-plugin-rs.git", branch = "main" }
+gst = { git="https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", package = "gstreamer", features = ["v1_20", "serde"] }
+gst-app = { git="https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", package = "gstreamer-app", features = ["v1_20"] }
+gst-video = { git="https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", package = "gstreamer-video", features = ["v1_20", "serde"] }
+gst-webrtc = { git="https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", package = "gstreamer-webrtc", features = ["v1_20"] }
+gst-sdp = { git="https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", package = "gstreamer-sdp", features = ["v1_20"] }
+gst-rtp = { git="https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", package = "gstreamer-rtp", features = ["v1_20"] }
+gst-utils = { git="https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", package = "gstreamer-utils" }
+gst-base = { git="https://gitlab.freedesktop.org/gstreamer/gstreamer-rs", package = "gstreamer-base" }
+
+gst-plugin-webrtc-signalling-protocol = "0.11.0"
+gst-plugin-webrtc = { path = "../gst-plugins-rs/net/webrtc" }
 tokio = { version = "1.14.0", features = ["full"] }
+glib = { git = "https://github.com/gtk-rs/gtk-rs-core.git", package = "glib" }
+
+thiserror = "1"
+futures = "0.3"
+tokio-native-tls = "0.3.0"
+tokio-stream = "0.1.11"
+async-tungstenite = { version = "0.23", features = ["tokio-runtime", "tokio-native-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+fastrand = "2.0"
+# gst_plugin_webrtc_protocol = { path="protocol", package = "gst-plugin-webrtc-signalling-protocol" }
+human_bytes = "0.4"
+url = "2"
+futures-util = { version = "0.3", default-features = false, features = ["sink", "std"] }
